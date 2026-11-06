@@ -1,0 +1,23 @@
+export const loaderLogo = `<svg class="loader-emblem" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="612" height="392" viewBox="0 0 612 392" fill="none">
+
+<defs>
+ <linearGradient id="shield" x1="188" y1="34" x2="402" y2="345" gradientUnits="userSpaceOnUse"><stop stop-color="#393735"/><stop offset=".45" stop-color="#292826"/><stop offset="1" stop-color="#343230"/></linearGradient>
+ <linearGradient id="letters" x1="214" y1="85" x2="373" y2="290" gradientUnits="userSpaceOnUse"><stop stop-color="#353641"/><stop offset=".5" stop-color="#232631"/><stop offset="1" stop-color="#30313b"/></linearGradient>
+ <linearGradient id="orange" x1="102" y1="146" x2="150" y2="282" gradientUnits="userSpaceOnUse"><stop stop-color="#ff9c49"/><stop offset=".5" stop-color="#f78532"/><stop offset="1" stop-color="#f89a4b"/></linearGradient>
+ <linearGradient id="blue" x1="61" y1="165" x2="130" y2="334" gradientUnits="userSpaceOnUse"><stop stop-color="#2996c4"/><stop offset=".5" stop-color="#137fae"/><stop offset="1" stop-color="#1987b6"/></linearGradient>
+ <linearGradient id="edge" x1="160" y1="35" x2="434" y2="345" gradientUnits="userSpaceOnUse"><stop stop-color="#9b9690"/><stop offset=".5" stop-color="#666360"/><stop offset="1" stop-color="#88817a"/></linearGradient>
+</defs>
+<!-- The open book: orange inner leaves, blue covers, and lower page edges. -->
+<path d="M138 146 C120 143 99 142 88 144 Q84 145 85 151 L104 286 C127 272 143 267 160 271 C183 276 207 291 226 306 C199 278 179 263 160 256 C145 250 133 254 119 262 L107 168 C115 163 126 164 140 169 Z" fill="url(#orange)" stroke="#e4bd90" stroke-width="1.4" stroke-linejoin="round"/>
+<path d="M472 153 C490 150 510 149 523 151 Q527 151 526 156 L502 291 C485 278 469 274 451 278 C430 281 406 294 384 308 C411 279 433 264 452 259 C464 255 475 259 487 267 L504 172 C495 167 483 170 468 173 Z" fill="url(#orange)" stroke="#dfb58b" stroke-width="1.4" stroke-linejoin="round"/>
+<path d="M59 166 Q65 163 75 164 L96 310 C144 297 193 304 239 326 C179 307 128 313 81 336 Z" fill="url(#blue)" stroke="#6ca4ba" stroke-width="1.4" stroke-linejoin="round"/>
+<path d="M533 170 Q542 169 551 174 L527 340 C477 317 430 311 372 327 C415 305 464 302 510 313 Z" fill="url(#blue)" stroke="#78a3b5" stroke-width="1.4" stroke-linejoin="round"/>
+<path d="M105 336 Q112 332 119 333 L124 348 C163 329 207 329 253 338 C194 329 148 342 111 367 Z" fill="url(#letters)" stroke="#8c8990" stroke-width="1.3" stroke-linejoin="round"/>
+<path d="M351 339 C401 329 445 330 482 350 L487 337 Q493 335 499 340 L491 370 C451 346 403 332 351 339 Z" fill="url(#letters)" stroke="#8c8990" stroke-width="1.3" stroke-linejoin="round"/>
+<!-- Continuous stepped shield outline. -->
+<path fill-rule="evenodd" d="M307 25 C262 29 213 42 181 60 L181 78 L156 91 L156 107 L131 121 C138 219 198 308 301 358 C401 314 464 229 481 127 L456 113 L456 97 L434 84 L433 65 C398 46 350 31 307 25 Z M307 45 C270 49 229 59 202 73 L201 91 L177 104 L176 120 L153 133 C167 220 216 289 302 336 C386 295 442 219 459 139 L435 125 L435 109 L414 96 L413 78 C381 62 340 49 307 45 Z" fill="url(#shield)" stroke="url(#edge)" stroke-width="1.4" stroke-linejoin="round"/>
+<!-- WC monogram. -->
+<path d="M198 124 L184 139 Q182 143 184 151 C194 193 210 229 235 255 L254 244 L276 280 Q278 283 283 281 L294 276 L298 82 L276 85 L273 226 C260 185 252 141 248 95 L226 108 C227 148 233 186 245 222 L239 227 C219 198 208 160 198 124 Z" fill="url(#letters)" stroke="#767680" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M315 86 L392 86 L391 144 Q381 148 369 145 L369 110 L338 109 L334 255 L367 237 L368 172 L389 186 L389 251 L310 298 Z" fill="url(#letters)" stroke="#82808a" stroke-width="1.2" stroke-linejoin="round"/>
+</svg>
+`;
