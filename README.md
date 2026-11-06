@@ -49,3 +49,17 @@ Homepage prototype with four confirmed programme names, generated illustrative i
 This sample is not admissions-ready. Phone, WhatsApp, address, map and enquiry delivery remain unconfigured. The form prepares a local note; no enquiry is sent. Additional pages await review.
 
 Current loader and parallax changes also pass the production build and TypeScript checks.
+
+## Supabase foundation
+
+Installed @supabase/supabase-js and @supabase/ssr. Local configuration is in ignored .env.local. Copy .env.example when setting up another checkout; do not commit local environment values.
+
+In Vercel add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY using the provided project settings, then redeploy. These are public project credentials; never substitute a secret/service-role key.
+
+Helpers:
+- utils/supabase/client.ts: createClient() for browser components.
+- utils/supabase/server.ts: await createClient() for Server Components, Server Actions, and Route Handlers. An existing awaited cookie store may optionally be passed.
+- utils/supabase/middleware.ts: refreshes/validates sessions with getClaims and propagates cookies and cache headers.
+- proxy.ts: Next.js 16 session-refresh entry point. Static/image/script/font assets bypass it. The public website stays public, and missing hosting settings do not prevent it loading.
+
+The homepage remains unchanged. No todos page, database schema, authentication screens, policies, or form inserts have been introduced. Before connecting admissions, define the enquiry schema and row-level security policies, decide the submission endpoint and spam controls, and update consent wording. The publishable key does not grant admin database access. Authorization must be enforced by database policies and private-route checks.
