@@ -1,4 +1,4 @@
-export const school = {name:'White Crown Academy', phone:'', whatsapp:'', address:'', mapEmbedUrl:'', enquiryEndpoint:''};
+export const school = {name:'White Crown Academy', phone:'', whatsapp:'', address:'', mapEmbedUrl:'', enquiryEndpoint:'/api/enquiries'};
 export const programmes = [
  {name:'Day Care',slug:'day-care',tag:'CARE & CONNECTION',text:'Discuss your child’s care needs and the support you are looking for.',tone:'blue',icon:'heart'},
  {name:'Junior KG',slug:'junior-kg',tag:'CURIOSITY & DISCOVERY',text:'Explore the Junior KG programme with the academy’s admissions team.',tone:'orange',icon:'sun'},
@@ -11,6 +11,8 @@ export const faqs = [
  ['Which programmes does White Crown Academy offer?','The academy offers exactly four programmes: Day Care, Junior KG, Senior KG, and After School.'],
  ['How do I choose the right programme?','Select a programme in the enquiry form and share your questions. Eligibility, age criteria, and programme details need to be confirmed with the academy.'],
  ['Where can I find fees and timings?','Fees, timings, and programme availability have not yet been provided for this website. Please request the current details from the academy.'],
- ['Can I arrange a school visit?','You can prepare a visit enquiry below. Confirmed contact details and enquiry delivery are pending; this preview does not submit an admission application.'],
+ ['Can I arrange a school visit?','Send a visit enquiry below. The academy can discuss availability with you; an enquiry does not confirm a visit or admission.'],
  ['Are these photographs of the academy?','No. All photographs shown here are AI-generated illustrations of learning experiences. They do not show enrolled children, actual educators, or verified academy facilities.'],
 ];
+
+

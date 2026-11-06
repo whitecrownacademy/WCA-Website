@@ -63,3 +63,10 @@ Helpers:
 - proxy.ts: Next.js 16 session-refresh entry point. Static/image/script/font assets bypass it. The public website stays public, and missing hosting settings do not prevent it loading.
 
 The homepage remains unchanged. No todos page, database schema, authentication screens, policies, or form inserts have been introduced. Before connecting admissions, define the enquiry schema and row-level security policies, decide the submission endpoint and spam controls, and update consent wording. The publishable key does not grant admin database access. Authorization must be enforced by database policies and private-route checks.
+
+## Admissions form database activation
+Run supabase/migrations/202611060001_admission_enquiries.sql once in the SQL Editor for the configured Supabase project. The publishable key cannot apply migrations. Until the migration is applied, POST /api/enquiries returns an honest temporary-unavailable error and never shows a false success.
+The migration enables RLS, revokes all anonymous/authenticated table access, and grants only a validated SECURITY DEFINER submission function with a fixed empty search_path. Public submissions cannot list, edit, or delete enquiries. The function limits each normalized phone to three enquiries per 15 minutes and makes retries idempotent by request UUID. This is basic abuse prevention, not a substitute for CAPTCHA under active spam.
+View submitted enquiries through Supabase Table Editor as an authorised project administrator. No public admin endpoint exists.
+The website uses a same-origin POST route, input validation, honeypot, required contact consent, timeout/retry handling, and idempotency keys. No service-role key is required. Test validation with: node --experimental-strip-types --test tests/enquiries.test.mjs.
+Activation still requires an actual save/read-access verification after the migration. No database success has been claimed or fabricated before that step.
