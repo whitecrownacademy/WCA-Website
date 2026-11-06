@@ -70,3 +70,21 @@ The migration enables RLS, revokes all anonymous/authenticated table access, and
 View submitted enquiries through Supabase Table Editor as an authorised project administrator. No public admin endpoint exists.
 The website uses a same-origin POST route, input validation, honeypot, required contact consent, timeout/retry handling, and idempotency keys. No service-role key is required. Test validation with: node --experimental-strip-types --test tests/enquiries.test.mjs.
 Activation still requires an actual save/read-access verification after the migration. No database success has been claimed or fabricated before that step.
+
+## Private admissions dashboard — /admin
+
+Features: overview metrics, 14-day trend chart (India time), programme interest, searchable/filterable/sortable enquiry inbox, pagination, detail drawer, status and internal-note updates, filtered CSV export and sign out. Data is loaded on demand (Refresh), not advertised as real-time. Up to the latest 1000 records are loaded with an explicit notice if truncated. Charts do not show fake data.
+
+Activation:
+1. Run supabase/migrations/202611060002_admin_dashboard.sql in Supabase SQL Editor. This adds notes/updated_at and a server-only durable login throttle; public enquiry access remains blocked.
+2. In Vercel add Secret variables (Production, and Preview if needed):
+   - ADMIN_PASSWORD: choose a unique password with at least 12 characters.
+   - ADMIN_SESSION_SECRET: a randomly generated signing secret, at least 32 characters. Generate with node -e "console.log(require('crypto').randomBytes(32).toString('hex'))" on your own machine.
+   - SUPABASE_SECRET_KEY: your Supabase server secret key (sb_secret_...), from Project Settings → API Keys. Never prefix this or either admin setting with NEXT_PUBLIC_. Do not paste these values into chat or commit them.
+3. Redeploy and visit /admin.
+
+Eight-hour HMAC-signed HttpOnly SameSite=Strict cookies, Secure in production. Every read/update checks the session server-side; no public admin data endpoint. Password rotation invalidates existing cookies; secret rotation also invalidates them. Ten login attempts per hashed IP bucket per 15 minutes, persisted in Supabase, with login failing closed if configuration/throttle is missing. Supabase admin client is stateless and server-only. Requests/responses are not cached. Status/note writes use optimistic concurrency to prevent accidental overwrites. CSV export escapes formula cells. Log out clears this browser’s cookie; rotating secrets revokes all active sessions. This is one shared administrator identity, not individual staff accounts or an audit trail.
+
+Tests: node --experimental-strip-types --test tests/admin.test.mjs tests/enquiries.test.mjs.
+
+Admin validation completed with isolated synthetic records (not production data): wrong-password and cross-origin login rejected; anonymous read rejected; successful login returns Secure/HttpOnly/SameSite=Strict cookie; private list not cached; malformed edits rejected; logout clears cookie. Browser-tested search, programme filtering, pagination, status/note editing, insights navigation and sign-out. Mobile 390px and desktop 1440px checked; mobile width overflow corrected. Actual Supabase privileged read/write and durable throttling require the admin migration and secret configuration before production verification.
